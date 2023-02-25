@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class Ezhednevnik(models.Model):
     zadachi = models.CharField(max_length=150, help_text="Название задачи")
     time_nach = models.DateTimeField(auto_now=True, help_text="Время начала")
@@ -18,7 +17,6 @@ class Ezhednevnik(models.Model):
 
     def __str__(self):
         return f"Ezhednevnik {self.id}|{self.zadachi}|{self.time_nach}|{self.active_switch}|{self.status}"
-
 
 
 # Create your models here.

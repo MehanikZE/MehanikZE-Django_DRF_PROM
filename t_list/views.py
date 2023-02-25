@@ -16,6 +16,8 @@ from t_list.models import Ezhednevnik
 from .serializers import ZadachiSerializer
 from .filters import ZadachiFilterSet
 from rest_framework.schemas.openapi import AutoSchema
+
+
 def current_datetime(request):
     now = datetime.datetime.now()
     html = f"Now {now}"
@@ -56,9 +58,11 @@ class ZadachaViewSet(
     mixins.RetrieveModelMixin,  # GET /articles/1
     mixins.DestroyModelMixin,  # DELETE /articles/1
     mixins.UpdateModelMixin,  # PUT /articles/1
-    viewsets.GenericViewSet
+    viewsets.GenericViewSet,
 ):
-    queryset = Ezhednevnik.objects.all().order_by("id") #.objects.all().order_by("-id")
+    queryset = Ezhednevnik.objects.all().order_by(
+        "id"
+    )  # .objects.all().order_by("-id")
     serializer_class = ZadachiSerializer
     filterset_class = ZadachiFilterSet
 
@@ -69,7 +73,7 @@ class ZadachaViewSet(
     # )
 
     # pagination_class = None
-    #permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     # def get_serializer_class(self):
     #     if self.action == "list":

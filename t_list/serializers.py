@@ -4,9 +4,6 @@ from django.contrib.auth import get_user_model
 from drf_extra_fields.fields import Base64ImageField
 
 
-
-
-
 class ZadachiSerializer(serializers.ModelSerializer):
     """Сериализатор по модели Article."""
 

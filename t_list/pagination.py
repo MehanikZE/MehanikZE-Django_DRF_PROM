@@ -4,7 +4,6 @@ from collections import OrderedDict
 from rest_framework.response import Response
 
 
-
 class BasePageNumberPagination(PageNumberPagination):
     """Pagination class"""
 

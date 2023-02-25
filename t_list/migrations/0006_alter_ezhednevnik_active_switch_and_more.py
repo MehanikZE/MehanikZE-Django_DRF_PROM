@@ -4,20 +4,26 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('t_list', '0005_ezhednevnik_time_zav'),
+        ("t_list", "0005_ezhednevnik_time_zav"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='ezhednevnik',
-            name='active_switch',
-            field=models.BooleanField(default=True, help_text='Статус задачи, снять галочку для завершения, установить для продолжения работ'),
+            model_name="ezhednevnik",
+            name="active_switch",
+            field=models.BooleanField(
+                default=True,
+                help_text="Статус задачи, снять галочку для завершения, установить для продолжения работ",
+            ),
         ),
         migrations.AlterField(
-            model_name='ezhednevnik',
-            name='status',
-            field=models.CharField(default='В работе', help_text='Статус задачи, комментарий к завершению', max_length=150),
+            model_name="ezhednevnik",
+            name="status",
+            field=models.CharField(
+                default="В работе",
+                help_text="Статус задачи, комментарий к завершению",
+                max_length=150,
+            ),
         ),
     ]
