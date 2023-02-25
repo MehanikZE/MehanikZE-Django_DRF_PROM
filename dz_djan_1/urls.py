@@ -1,4 +1,5 @@
 from t_list.views import current_datetime
+from django.urls import path, include
 
 """dz_djan_1 URL Configuration
 
@@ -31,4 +32,5 @@ urlpatterns = [
     path("data_crt/", ZadachaCreateView.as_view()),
     path("data_upd/<int:pk>", ZadachaUpdateView.as_view()),
     path("data_del/<int:pk>", ZadachaDeleteView.as_view()),
+    path("api/", include("t_list.urls")),
 ]
