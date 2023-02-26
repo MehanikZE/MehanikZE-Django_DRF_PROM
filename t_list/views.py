@@ -5,9 +5,8 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
-from rest_framework.permissions import IsAuthenticated
 
-from t_list.models import Ezhednevnik
+
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 
@@ -15,7 +14,6 @@ from rest_framework import viewsets, mixins
 from t_list.models import Ezhednevnik
 from .serializers import ZadachiSerializer
 from .filters import ZadachiFilterSet
-from rest_framework.schemas.openapi import AutoSchema
 
 
 def current_datetime(request):
@@ -53,32 +51,16 @@ class ZadachaDeleteView(DeleteView):
 
 
 class ZadachaViewSet(
-    mixins.ListModelMixin,  # GET /articles
-    mixins.CreateModelMixin,  # POST /articles
-    mixins.RetrieveModelMixin,  # GET /articles/1
-    mixins.DestroyModelMixin,  # DELETE /articles/1
-    mixins.UpdateModelMixin,  # PUT /articles/1
+    mixins.ListModelMixin,
+    mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.DestroyModelMixin,
+    mixins.UpdateModelMixin,
     viewsets.GenericViewSet,
 ):
-    queryset = Ezhednevnik.objects.all().order_by(
-        "id"
-    )  # .objects.all().order_by("-id")
+    queryset = Ezhednevnik.objects.all().order_by("id")
     serializer_class = ZadachiSerializer
     filterset_class = ZadachiFilterSet
-
-    # schema = AutoSchema(
-    #     tags=['Zadacha'],
-    #     component_name='Ezhednevnik',
-    #     operation_id_base='Ezhednevnik',
-    # )
-
-    # pagination_class = None
-    # permission_classes = [IsAuthenticated]
-
-    # def get_serializer_class(self):
-    #     if self.action == "list":
-    #         return NonModelSerializer
-    #     return ArticleSerializer
 
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
